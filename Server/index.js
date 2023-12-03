@@ -1,6 +1,3 @@
-// After Change!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
 const express = require("express");
 const cors = require("cors");
 const { MongoClient } = require("mongodb");
@@ -43,13 +40,11 @@ async function getDataFromDatabase(query) {
 }
 
 // POST /getData route to receive new data and respond
-app.post('/updateItemData', async (req, res) => {
+app.post('https://licenseplateserver-production.up.railway.app/updateItemData', async (req, res) => {
   console.log('Received request for /updateItemData', req.body);
   
   const newItemNumber = req.body.newItemNumber;
   // Process the new data as needed, e.g. add to the database.
-
-  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",newItemNumber);
 
   // After processing, fetch the updated data from the database.
   try {
@@ -62,7 +57,7 @@ app.post('/updateItemData', async (req, res) => {
 });
 
 // GET /getData route to send back data for a specific item
-app.get('/getData', async (req, res) => {
+app.get('https://licenseplateserver-production.up.railway.app/getData', async (req, res) => {
   const rawItemNumber = req.query.itemNumber;
   const itemNumber = parseInt(rawItemNumber, 10);
 
