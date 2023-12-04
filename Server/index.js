@@ -4,15 +4,7 @@ const { MongoClient } = require("mongodb");
 const bodyParser = require("body-parser");
 require('dotenv').config();
 
-const app = express();
-const PORT = process.env.PORT;
-
-// Middleware
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-const allowedOrigins = ['https://license-plate-git-main-brianhess213.vercel.app/','https://license-plate-9vtx6m3s0-brianhess213.vercel.app/', 'http://localhost:3000']; // Add allowed origins here
+const allowedOrigins = ['https://license-plate-git-main-brianhess213.vercel.app','https://license-plate-9vtx6m3s0-brianhess213.vercel.app', 'http://localhost:3000']; // Add allowed origins here
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -25,7 +17,18 @@ const corsOptions = {
   credentials: true // If your frontend needs to send credentials
 };
 
-app.use(cors(corsOptions));
+const app = express();
+const PORT = process.env.PORT;
+
+
+// Middleware
+app.options('*', cors(corsOptions)); // Enable CORS for preflight
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
+
 
 // Global MongoClient variable
 let client;
