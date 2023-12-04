@@ -23,6 +23,10 @@ const PORT = process.env.PORT;
 
 // Middleware
 app.use(cors(corsOptions));
+app.use((error, req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*"); // or set to specific domains 
+  res.status(500).json({ error: 'Internal Server Error' });
+});
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
