@@ -8,14 +8,18 @@ const app = express();
 const PORT = process.env.PORT;
 
 // Middleware
-app.use(cors());
+const cors = require("cors");
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(cors({
-  origin: 'licenseplateserver-production.up.railway.app'
-}));
+const corsOptions = {
+  origin: 'https://license-plate-kappa.vercel.app/', // The URL of your front end
+  
+};
+
+app.use(cors(corsOptions));
+
 
 // Global MongoClient variable
 let client;
@@ -44,7 +48,7 @@ async function getDataFromDatabase(query) {
 }
 
 // POST /getData route to receive new data and respond
-app.post('https://licenseplateserver-production.up.railway.app/updateItemData', async (req, res) => {
+app.post('/updateItemData', async (req, res) => {
   console.log('Received request for /updateItemData', req.body);
   
   const newItemNumber = req.body.newItemNumber;
@@ -61,7 +65,7 @@ app.post('https://licenseplateserver-production.up.railway.app/updateItemData', 
 });
 
 // GET /getData route to send back data for a specific item
-app.get('https://licenseplateserver-production.up.railway.app/getData', async (req, res) => {
+app.get('/getData', async (req, res) => {
   const rawItemNumber = req.query.itemNumber;
   const itemNumber = parseInt(rawItemNumber, 10);
 
