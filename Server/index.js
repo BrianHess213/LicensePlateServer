@@ -12,13 +12,20 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+const allowedOrigins = ['https://license-plate-git-main-brianhess213.vercel.app/','https://license-plate-9vtx6m3s0-brianhess213.vercel.app/', 'http://localhost:3000']; // Add allowed origins here
+
 const corsOptions = {
-  origin: 'https://license-plate-kappa.vercel.app/', // The URL of your front end
-  
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true // If your frontend needs to send credentials
 };
 
 app.use(cors(corsOptions));
-
 
 // Global MongoClient variable
 let client;
