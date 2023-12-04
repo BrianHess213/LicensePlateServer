@@ -13,6 +13,10 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(cors({
+  origin: 'https://license-plate-fl7yeb3ob-brianhess213.vercel.app/'
+}));
+
 // Global MongoClient variable
 let client;
 
