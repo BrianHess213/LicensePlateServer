@@ -22,7 +22,7 @@ const PORT = process.env.PORT;
 
 
 // Middleware
-app.options('*', cors(corsOptions)); // Enable CORS for preflight
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
