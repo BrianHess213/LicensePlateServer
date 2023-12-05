@@ -21,6 +21,8 @@ const app = express();
 const PORT = process.env.PORT;
 
 
+
+
 // Middleware
 app.use(cors(corsOptions));
 app.use((error, req, res, next) => {
@@ -30,6 +32,10 @@ app.use((error, req, res, next) => {
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.get('/', function (req, res) {
+  res.send({ title: 'GeeksforGeeks' });
+});
 
 
 
