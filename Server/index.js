@@ -4,7 +4,11 @@ const { MongoClient } = require("mongodb");
 const bodyParser = require("body-parser");
 require('dotenv').config();
 
-const allowedOrigins = ['https://license-plate-git-main-brianhess213.vercel.app','https://license-plate-9vtx6m3s0-brianhess213.vercel.app', 'http://localhost:3000']; // Add allowed origins here
+const allowedOrigins = [
+'https://license-plate-git-main-brianhess213.vercel.app',
+'https://license-plate-9vtx6m3s0-brianhess213.vercel.app', 
+'http://localhost:3000', 
+'https://licenseplate-server.onrender.com/']; // Add allowed origins here
 
 const corsOptions = {
   origin: function (origin, callback) {
