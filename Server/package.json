@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon ."
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "https://licenseplate-server.onrender.com/",
   "author": "",
   "license": "ISC",
   "dependencies": {
