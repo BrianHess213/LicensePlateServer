@@ -108,8 +108,7 @@ app.get('/getData', async (req, res) => {
 });
 
 // Start server and database initialization
-app.listen(PORT == null || PORT == "", () => {
-  PORT = 8000;
+app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
   initializeDatabase()
     .then(() => console.log("Database connected."))
