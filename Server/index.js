@@ -7,7 +7,8 @@ require('dotenv').config();
 const allowedOrigins = [
 'https://license-plate-git-main-brianhess213.vercel.app',
 'https://license-plate-9vtx6m3s0-brianhess213.vercel.app', 
-'http://localhost:3000', 
+'http://localhost:3000',
+'http://localhost:3001',
 'https://licenseplate-server.onrender.com/']; // Add allowed origins here
 
 const corsOptions = {
