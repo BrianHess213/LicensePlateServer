@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
-  res.send({ title: 'GeeksforGeeks' });
+  res.send({ title: 'Hello!' });
 });
 
 
@@ -108,7 +108,8 @@ app.get('/getData', async (req, res) => {
 });
 
 // Start server and database initialization
-app.listen(PORT, () => {
+app.listen(PORT == null || PORT == "", () => {
+  PORT = 8000;
   console.log(`App listening on port ${PORT}`);
   initializeDatabase()
     .then(() => console.log("Database connected."))
