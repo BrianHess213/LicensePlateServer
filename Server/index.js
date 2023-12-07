@@ -26,8 +26,6 @@ const app = express();
 const PORT = process.env.PORT;
 
 
-
-
 // Middleware
 app.use(cors(corsOptions));
 app.use((error, req, res, next) => {
@@ -80,7 +78,7 @@ app.post('/updateItemData', async (req, res) => {
 
   // After processing, fetch the updated data from the database.
   try {
-    const updatedData = await getDataFromDatabase({"Item_Name": newItemNumber});
+    const updatedData = await getDataFromDatabase({"Case_GTIN": newItemNumber});
     res.json({ message: "Item number updated", updatedData: updatedData });
     console.log('Updated data:', updatedData);
   } catch (error) {
@@ -98,7 +96,7 @@ app.get('/getData', async (req, res) => {
 
   try {
     // Conditionally build query based on whether the parsed itemNumber is NaN
-    const query = !isNaN(itemNumber) ? {Item_Name: itemNumber} : {Item_Name: rawItemNumber};
+    const query = !isNaN(itemNumber) ? {Case_GTIN: itemNumber} : {Case_GTIN: rawItemNumber};
 
     const data = await getDataFromDatabase(query);
     if (data) {
